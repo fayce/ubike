@@ -1,0 +1,231 @@
+<mockup version="1.0" skin="sketch" measuredW="1350" measuredH="565" mockupW="1264" mockupH="519">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::iPhone" x="76" y="41" w="-1" h="-1" measuredW="282" measuredH="510" zOrder="0" locked="false" isInGroup="-1"/>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Map" x="104" y="139" w="222" h="325" measuredW="252" measuredH="222" zOrder="1" locked="false" isInGroup="-1"/>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Canvas" x="104" y="139" w="222" h="36" measuredW="100" measuredH="70" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Label" x="198" y="145" w="-1" h="-1" measuredW="37" measuredH="23" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>uBike</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Icon" x="116" y="145" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>SearchIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Icon" x="196" y="232" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <icon>PushPinIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Icon" x="242" y="257" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <icon>PushPinIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::Icon" x="245" y="313" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <icon>PushPinIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Icon" x="165" y="273" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <icon>PushPinIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Icon" x="203" y="319" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <icon>PushPinIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Icon" x="185" y="368" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <icon>PushPinIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Icon" x="218" y="297" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>545684</color>
+        <icon>DotIcon%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Icon" x="290" y="145" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>HLinesIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::iPhone" x="739" y="45" w="-1" h="-1" measuredW="282" measuredH="510" zOrder="13" locked="false" isInGroup="-1"/>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Canvas" x="767" y="143" w="222" h="36" measuredW="100" measuredH="70" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+      </controlProperties>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::Label" x="861" y="149" w="-1" h="-1" measuredW="37" measuredH="23" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>uBike</text>
+      </controlProperties>
+    </control>
+    <control controlID="25" controlTypeID="com.balsamiq.mockups::Icon" x="955" y="145" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>GeoLocationIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="26" controlTypeID="com.balsamiq.mockups::SearchBox" x="767" y="170" w="222" h="-1" measuredW="55" measuredH="25" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>filter</text>
+      </controlProperties>
+    </control>
+    <control controlID="27" controlTypeID="com.balsamiq.mockups::iPhoneMenu" x="772" y="205" w="-1" h="-1" measuredW="215" measuredH="242" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>6%20%7C%20%20Zongxiao%20Dunhua%2C%2010m%0A12%20%7C%20Ximending%2C%2025m%0A16%20%7C%20Daan%20Park%2C%2032m%0A7%20%7C%20XinYi%2C%2045m%0A32%20%7C%20Zongxiao%20Dunhua%2C%2079m%0A12%20%7C%20Ximending%2C%20140m%0A16%20%7C%20Daan%20Park%2C%202km%0A7%20%7C%20XinYi%2C%206km</text>
+      </controlProperties>
+    </control>
+    <control controlID="29" controlTypeID="com.balsamiq.mockups::iPhone" x="1058" y="36" w="-1" h="-1" measuredW="282" measuredH="510" zOrder="19" locked="false" isInGroup="-1"/>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::Canvas" x="1086" y="134" w="222" h="36" measuredW="100" measuredH="70" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+      </controlProperties>
+    </control>
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::Label" x="1180" y="140" w="-1" h="-1" measuredW="37" measuredH="23" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>uBike</text>
+      </controlProperties>
+    </control>
+    <control controlID="32" controlTypeID="com.balsamiq.mockups::Icon" x="1274" y="136" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>ReloadIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="35" controlTypeID="com.balsamiq.mockups::PointyButton" x="1092" y="138" w="-1" h="-1" measuredW="49" measuredH="27" zOrder="23" locked="false" isInGroup="-1">
+      <controlProperties>
+        <direction>left</direction>
+        <text>Back</text>
+      </controlProperties>
+    </control>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::iPhoneMenu" x="1086" y="351" w="220" h="-1" measuredW="215" measuredH="68" zOrder="24" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Get%20direction%0AStreet%20view</text>
+      </controlProperties>
+    </control>
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::iPhoneMenu" x="1086" y="162" w="220" h="-1" measuredW="215" measuredH="39" zOrder="25" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Zhonxiao%20Xinsheng</text>
+      </controlProperties>
+    </control>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::Canvas" x="1086" y="189" w="222" h="174" measuredW="100" measuredH="70" zOrder="26" locked="false" isInGroup="-1"/>
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::Title" x="1123" y="245" w="-1" h="-1" measuredW="44" measuredH="56" zOrder="27" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>12</text>
+      </controlProperties>
+    </control>
+    <control controlID="43" controlTypeID="com.balsamiq.mockups::Title" x="1220" y="245" w="-1" h="-1" measuredW="54" measuredH="56" zOrder="28" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>25</text>
+      </controlProperties>
+    </control>
+    <control controlID="45" controlTypeID="com.balsamiq.mockups::Label" x="1111" y="288" w="-1" h="-1" measuredW="57" measuredH="23" zOrder="29" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>available</text>
+      </controlProperties>
+    </control>
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::Label" x="1229" y="288" w="-1" h="-1" measuredW="33" measuredH="23" zOrder="30" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>total</text>
+      </controlProperties>
+    </control>
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::Label" x="1099" y="205" w="-1" h="-1" measuredW="106" measuredH="23" zOrder="31" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Distance%3A%20%20%20123m</text>
+      </controlProperties>
+    </control>
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::Icon" x="1274" y="387" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="32" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>EyeIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::Icon" x="1274" y="363" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="33" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>UpRightArrowIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="50" controlTypeID="com.balsamiq.mockups::iPhone" x="379" y="43" w="-1" h="-1" measuredW="282" measuredH="510" zOrder="34" locked="false" isInGroup="-1"/>
+    <control controlID="51" controlTypeID="com.balsamiq.mockups::Map" x="407" y="141" w="222" h="325" measuredW="252" measuredH="222" zOrder="35" locked="false" isInGroup="-1"/>
+    <control controlID="52" controlTypeID="com.balsamiq.mockups::Canvas" x="407" y="141" w="222" h="36" measuredW="100" measuredH="70" zOrder="36" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+      </controlProperties>
+    </control>
+    <control controlID="53" controlTypeID="com.balsamiq.mockups::Label" x="501" y="147" w="-1" h="-1" measuredW="37" measuredH="23" zOrder="37" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>uBike</text>
+      </controlProperties>
+    </control>
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::Icon" x="419" y="147" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="38" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>SearchIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="55" controlTypeID="com.balsamiq.mockups::Icon" x="499" y="234" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="39" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <icon>PushPinIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="56" controlTypeID="com.balsamiq.mockups::Icon" x="545" y="259" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="40" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <icon>PushPinIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="57" controlTypeID="com.balsamiq.mockups::Icon" x="548" y="315" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="41" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <icon>PushPinIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="58" controlTypeID="com.balsamiq.mockups::Icon" x="468" y="275" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="42" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <icon>PushPinIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="59" controlTypeID="com.balsamiq.mockups::Icon" x="506" y="321" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="43" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <icon>PushPinIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="60" controlTypeID="com.balsamiq.mockups::Icon" x="488" y="370" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="44" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <icon>PushPinIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="61" controlTypeID="com.balsamiq.mockups::Icon" x="521" y="299" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="45" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>545684</color>
+        <icon>DotIcon%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="62" controlTypeID="com.balsamiq.mockups::Icon" x="593" y="147" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="46" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>HLinesIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="63" controlTypeID="com.balsamiq.mockups::SearchBox" x="408" y="178" w="222" h="-1" measuredW="55" measuredH="25" zOrder="47" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>filter</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
