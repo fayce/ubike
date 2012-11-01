@@ -2,15 +2,15 @@
 function ListWin() {
 	//create object instance, parasitic subclass of Observable
 	var self = Ti.UI.createWindow({
-		backgroundColor : 'red',
 	});
 
 	var gdata;
 	//searchbar
 	var searchbar = Titanium.UI.createSearchBar({
 		showCancel : false,
-		barColor : '#385292',
+		barColor: '#F0F0F0'
 	});
+	
 	//table
 	var tableView = Ti.UI.createTableView({
 		//data : tableData
@@ -25,13 +25,18 @@ function ListWin() {
 		systemButton : Titanium.UI.iPhone.SystemButton.REFRESH
 	});
 
-	var logo = Titanium.UI.createButton({
-		image : '/images/header.png',
+	
+	//Create the toolbar
+	var refresh = Titanium.UI.createImageView({
+		image : '/images/reload.png'
 	});
 
-	var switchwin = Titanium.UI.createButton({
-		title : 'Map',
-		style : Titanium.UI.iPhone.SystemButtonStyle.DONE,
+	var logo = Ti.UI.createImageView({
+		image : '/images/logo.png',
+	})
+
+	var switchwin = Titanium.UI.createImageView({
+		image : '/images/map.png'
 	});
 
 	flexSpace = Titanium.UI.createButton({
@@ -42,9 +47,13 @@ function ListWin() {
 		items : [refresh, flexSpace, logo, flexSpace, switchwin],
 		top : 0,
 		borderTop : false,
-		borderBottom : true
+		borderBottom : false,
+		barColor: '#F0F0F0'
 	});
 
+	self.add(toolbar);
+	
+	
 	//events/
 	tableView.addEventListener('click', function(e) {
 		Titanium.API.info(e);
@@ -54,16 +63,10 @@ function ListWin() {
 
 	});
 	refresh.addEventListener('click', function(e) {
-		self.fireEvent('app:refresh', {
-			source : e.clicksource,
-			data : e
-		})
+		self.fireEvent('app:refresh')
 	});
 	switchwin.addEventListener('click', function(e) {
-		self.fireEvent('app:map', {
-			source : e.clicksource,
-			data : e
-		});
+		self.fireEvent('app:map');
 	});
 
 	//methods

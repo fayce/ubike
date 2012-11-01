@@ -3,9 +3,11 @@ function MapWin() {
 	//create object instance, parasitic subclass of Observable
 	var self = Ti.UI.createWindow({
 		backgroundColor : 'blue',
+		title : 'test title'
 	});
 
-	var gdata; //container for the data
+	var gdata;
+	//container for the data
 	//Create the map view
 	var mapView = Ti.Map.createView({
 		mapType : Ti.Map.STANDARD_TYPE,
@@ -52,24 +54,38 @@ function MapWin() {
 		}
 	};
 
+	
 	//Create the toolbar
-	var refresh = Titanium.UI.createButton({
-		systemButton : Titanium.UI.iPhone.SystemButton.REFRESH
+	var refresh = Titanium.UI.createImageView({
+		image : '/images/reload.png',
+		left: 0
 	});
 
-	var logo = Titanium.UI.createButton({
-		image : '/images/header.png',
-	});
+	var logo = Ti.UI.createImageView({
+		image : '/images/logo.png',
+	})
 
-	var switchwin = Titanium.UI.createButton({
-		title : 'List',
-		style : Titanium.UI.iPhone.SystemButtonStyle.DONE,
+	var switchwin = Titanium.UI.createImageView({
+		image : '/images/list.png',
+		right: 0
 	});
 
 	flexSpace = Titanium.UI.createButton({
 		systemButton : Titanium.UI.iPhone.SystemButton.FLEXIBLE_SPACE
 	});
+	var toolbar = Titanium.UI.iOS.createToolbar({
+		items : [refresh, flexSpace, logo, flexSpace, switchwin],
+		top : 0,
+		borderTop : false,
+		borderBottom : true,
+		opacity: 0.9,
+		borderBottomColor : '#D1D1D1',
+		barColor: '#F0F0F0'
+	});
 
+	self.add(toolbar);
+	
+	
 	//events/
 	mapView.addEventListener('click', function(e) {
 		//Titanium.API.info('need a bike bro?');
@@ -79,28 +95,13 @@ function MapWin() {
 			});
 		}
 	});
-	
+
 	refresh.addEventListener('click', function(e) {
-		self.fireEvent('app:refresh', {
-			source : e.clicksource,
-			data : e
-		})
+		self.fireEvent('app:refresh')
 	});
 	switchwin.addEventListener('click', function(e) {
-		self.fireEvent('app:list', {
-			source : e.clicksource,
-			data : e
-		});
+		self.fireEvent('app:list');
 	});
-
-	var toolbar = Titanium.UI.iOS.createToolbar({
-		items : [refresh, flexSpace, logo, flexSpace, switchwin],
-		top : 0,
-		borderTop : false,
-		borderBottom : true
-	});
-
-	self.add(toolbar);
 
 	return self;
 };
