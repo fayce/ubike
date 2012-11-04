@@ -32,7 +32,7 @@ function MapWin() {
 			longitude : point["lng"],
 			title : point["name_en"],
 			subtitle : String.format("%s/%s", point["sus_bike"], point["tot_bike"]),
-			pincolor : Titanium.Map.ANNOTATION_GREEN,
+			pincolor : Titanium.Map.ANNOTATION_RED,
 			animate : true,
 			rightButton : Titanium.UI.iPhone.SystemButton.INFO_LIGHT,
 			myid : point["id"]
