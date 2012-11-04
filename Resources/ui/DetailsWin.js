@@ -20,14 +20,16 @@ function DetailsWin() {
 	self.setLeftNavButton(close);
 
 	var label1 = Ti.UI.createLabel({
-		color : 'black',
+		color : 'white',
 		font : {
 			fontSize : 48
 		},
 		textAlign : Ti.UI.TEXT_ALIGNMENT_LEFT,
 		top : 30,
 		width : 'auto',
-		height : 'auto'
+		height : 'auto',
+		backgroundColor: "#E01B6A",
+		borderRadius: "10"
 	});
 
 	var label2 = Ti.UI.createLabel({

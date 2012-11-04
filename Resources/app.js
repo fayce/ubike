@@ -9,6 +9,8 @@ if (Ti.version < 1.8) {
 		mapWin = new MapWin();
 		listWin = new ListWin();
 		detailsWin = new DetailsWin();
+		
+		var activeWin = 'mapwin';
 
 		//funcs
 		function refreshData() {
