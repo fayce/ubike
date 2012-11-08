@@ -56,19 +56,37 @@ function MapWin() {
 			//mapView.selectAnnotation(mapView.annotations[i].title,true);
 		}
 	};
+	self.getLocation = function() {
+		Ti.Geolocation.purpose = "What's your location?";
+		Titanium.Geolocation.getCurrentPosition(function(e) {
+			var currentLocation = '';
+			if (!e.success || e.error) {
+				currentLocation.text = 'error: ' + JSON.stringify(e.error);
+				alert('error ' + JSON.stringify(e.error));
+				return;
+			}
 
+			var longitude = e.coords.longitude;
+			var latitude = e.coords.latitude;
+			
+			//currentLocation.text = 'long:' + longitude + ' lat: ' + latitude;
+
+			//Titanium.API.info('geo - current location: long: ' + longitude + ' lat: ' + latitude );
+			
+			return {lat: latitude, lng: longitude};
+		});
+	};
 	self.drawRoute = function(point) {
 		if (self.hasroute) {
 			mapView.removeRoute(self.route);
 			self.hasroute = false;
 		}
 
-		origin = point['lat'] + 0.27+","+(point['lng'] + 0.34);
+		//origin = point['lat'] + 0.27 + "," + (point['lng'] + 0.34);
 		destination = point['lat']+","+point['lng'];
+		//origin = self.getLocation();
 		
-		Ti.API.info(origin);
-		Ti.API.info(destination);
-		
+
 		data = [];
 		var url = "http://maps.googleapis.com/maps/api/directions/xml?origin=25.046881,121.545225&destination=25.049881,121.555225&sensor=false"
 		//var url = "http://maps.googleapis.com/maps/api/directions/xml?origin=" + origin + "&destination=" + destination + "&sensor=true";
@@ -86,7 +104,7 @@ function MapWin() {
 			//Ti.API.info(itemlist);
 			for (var i = 0; i < itemList.length; i++) {
 				var item = itemList.item(i);
-		
+
 				data.push({
 					latitude : item.getElementsByTagName("lat").item(0).text,
 					longitude : item.getElementsByTagName("lng").item(0).text,
