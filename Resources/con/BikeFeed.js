@@ -19,7 +19,7 @@ exports.loadFeed = function(o, tries) {
 				exports.loadRssFeed(o, tries);
 				return;
 			} else {
-				alert('Error reading ubike feed. Make sure you have a network connection and try refreshing.');
+				Titanium.UI.createAlertDialog({title:'Connexion Error', message:'Make sure you are connected'}).show();
 				if (o.error) { o.error(); }
 				return;	
 			}	

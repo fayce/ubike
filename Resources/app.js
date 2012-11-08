@@ -9,7 +9,7 @@ if (Ti.version < 1.8) {
 		mapWin = new MapWin();
 		listWin = new ListWin();
 		detailsWin = new DetailsWin();
-		
+
 		var activeWin = 'mapwin';
 
 		//funcs
@@ -36,12 +36,13 @@ if (Ti.version < 1.8) {
 		//window to list
 		mapWin.addEventListener('app:list', function(e) {
 			Ti.API.info('app:list');
+			activeWin = 'listwin';
 			listWin.open({
 				view : mapWin,
 				transition : Ti.UI.iPhone.AnimationStyle.FLIP_FROM_RIGHT
 			});
 		});
-		
+
 		//bike details
 		mapWin.addEventListener('app:details', function(e) {
 			Ti.API.info('app:details');
@@ -54,6 +55,18 @@ if (Ti.version < 1.8) {
 			//Ti.API.info(e);
 			detailsWin.fill(e['data']);
 			detailsWin.open();
+		});
+		detailsWin.addEventListener('app:routeme', function(e) {
+			Ti.API.info('app:routeme');
+			//Ti.API.info(e);
+			
+			//detailsWin.fill(e['data']);
+			detailsWin.close();
+			
+			if (activeWin == 'listwin'){
+				listWin.close();
+			}
+			mapWin.drawRoute(e);
 		});
 
 		//window to map

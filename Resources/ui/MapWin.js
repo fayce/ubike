@@ -7,6 +7,9 @@ function MapWin() {
 	});
 
 	var gdata;
+
+	self.hasroute = false;
+
 	//container for the data
 	//Create the map view
 	var mapView = Ti.Map.createView({
@@ -54,11 +57,58 @@ function MapWin() {
 		}
 	};
 
-	
+	self.drawRoute = function(point) {
+		if (self.hasroute) {
+			mapView.removeRoute(self.route);
+			self.hasroute = false;
+		}
+
+		origin = point['lat'] + 0.27+","+(point['lng'] + 0.34);
+		destination = point['lat']+","+point['lng'];
+		
+		Ti.API.info(origin);
+		Ti.API.info(destination);
+		
+		data = [];
+		var url = "http://maps.googleapis.com/maps/api/directions/xml?origin=25.046881,121.545225&destination=25.049881,121.555225&sensor=false"
+		//var url = "http://maps.googleapis.com/maps/api/directions/xml?origin=" + origin + "&destination=" + destination + "&sensor=true";
+		xhr = Titanium.Network.createHTTPClient();
+		xhr.open('GET', url);
+		Ti.API.info('URL: ' + url);
+		xhr.onload = function() {
+
+			// Now parse the XML
+			var xml = this.responseXML;
+
+			// Find the steps in response
+			var itemList = xml.documentElement.getElementsByTagName("start_location");
+			Ti.API.info('found ' + itemList.length + ' items in the step xml');
+			//Ti.API.info(itemlist);
+			for (var i = 0; i < itemList.length; i++) {
+				var item = itemList.item(i);
+		
+				data.push({
+					latitude : item.getElementsByTagName("lat").item(0).text,
+					longitude : item.getElementsByTagName("lng").item(0).text,
+				});
+			}
+			Ti.API.info(data);
+			self.route = {
+				color : '#1DDE37',
+				name : 'testroute',
+				points : data,
+				width : 3,
+			}
+			mapView.addRoute(self.route);
+			self.hasroute = true;
+		};
+		xhr.send();
+
+	}
 	//Create the toolbar
 	var refresh = Titanium.UI.createImageView({
 		image : '/images/reload.png',
-		left: 0
+		left : 0
 	});
 
 	var logo = Ti.UI.createImageView({
@@ -67,7 +117,7 @@ function MapWin() {
 
 	var switchwin = Titanium.UI.createImageView({
 		image : '/images/list.png',
-		right: 0
+		right : 0
 	});
 
 	flexSpace = Titanium.UI.createButton({
@@ -78,14 +128,13 @@ function MapWin() {
 		top : 0,
 		borderTop : false,
 		borderBottom : true,
-		opacity: 0.9,
+		opacity : 0.9,
 		borderBottomColor : '#D1D1D1',
-		barColor: '#F0F0F0'
+		barColor : '#F0F0F0'
 	});
 
 	self.add(toolbar);
-	
-	
+
 	//events/
 	mapView.addEventListener('click', function(e) {
 		//Titanium.API.info('need a bike bro?');
