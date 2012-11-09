@@ -8,9 +8,9 @@ function DetailsWin() {
 
 	var self = Titanium.UI.createWindow({
 		backgroundColor : '#F0F0F0',
-		//borderWidth : 8,
-		borderColor : '#999',
-		height : 400,
+		borderWidth : 1,
+		borderColor : '#4d4d4f',
+		height : 350,
 		width : 300,
 		borderRadius : 10,
 		opacity : 0.95,
@@ -26,7 +26,7 @@ function DetailsWin() {
 
 	var labelSus = Ti.UI.createLabel({
 		color : '#FFFFFF',
-		backgroundColor : "#E01B6A",
+		backgroundColor : "#dd3d2d",
 		textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
 		font : {
 			fontFamily : 'Arial',
@@ -40,7 +40,7 @@ function DetailsWin() {
 	});
 	var labelSusLegend = Ti.UI.createLabel({
 		color : '#FFFFFF',
-		backgroundColor : "#E01B6A",
+		backgroundColor : "#dd3d2d",
 		textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
 		text : 'Available',
 		font : {
@@ -56,7 +56,7 @@ function DetailsWin() {
 
 	var labelTot = Ti.UI.createLabel({
 		color : '#FFFFFF',
-		backgroundColor : "#1DDE37",
+		backgroundColor : "#4cbfde",
 		textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
 		font : {
 			fontFamily : 'Arial',
@@ -70,7 +70,7 @@ function DetailsWin() {
 	});
 	var labelTotLegend = Ti.UI.createLabel({
 		color : '#FFFFFF',
-		backgroundColor : "#1DDE37",
+		backgroundColor : "#4cbfde",
 		textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
 		text : 'Total',
 		font : {
@@ -85,7 +85,7 @@ function DetailsWin() {
 	});
 
 	var labelStation = Ti.UI.createLabel({
-		color : '#A6A6A6',
+		color : '#b0c81c',
 		font : {
 			fontFamily : 'Arial',
 			fontSize : defaultFontSize + 20,
@@ -98,7 +98,7 @@ function DetailsWin() {
 	});
 
 	var labelAddress = Ti.UI.createLabel({
-		color : '#CCCCCC',
+		color : '#eead1d',
 		font : {
 			fontFamily : 'Arial',
 			fontSize : defaultFontSize + 10
@@ -116,6 +116,13 @@ function DetailsWin() {
 		height : 50,
 		borderRadius : 0,
 	});
+	var buttonClose = Titanium.UI.createButton({
+		title : 'Close',
+		top : 300,
+		width : '50%',
+		height : 50,
+		borderRadius : 0,
+	});
 
 	self.add(labelStation);
 	self.add(labelAddress);
@@ -124,8 +131,12 @@ function DetailsWin() {
 	self.add(labelSusLegend);
 	self.add(labelTotLegend);
 	self.add(buttonRouteMe);
+	//self.add(buttonClose);
 	//events
 	close.addEventListener('click', function(e) {
+		self.close();
+	});
+	buttonClose.addEventListener('click', function(e) {
 		self.close();
 	});
 

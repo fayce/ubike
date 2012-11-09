@@ -1,3 +1,21 @@
+/*
+ *  uBike Taipei Mobile app 
+ *  Faycal Guennar <me@ayce.net>
+ *  Nov 2012
+ * 
+ * 
+ * *****************************************
+ *  CI color:
+ * #b0c81c lime green
+ * #4cbfde light blue
+ * #dd3d2d red
+ * #eead1d orange
+ * #1d79a8 dark blue
+ * #4d4d4f dark grey
+ * **************************************** 
+ * 
+ * */
+
 if (Ti.version < 1.8) {
 	alert('Sorry - this application template requires Titanium Mobile SDK 1.8 or later');
 } else {

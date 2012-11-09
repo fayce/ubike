@@ -35,11 +35,11 @@ function MapWin() {
 			textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
 			font : {
 				fontFamily : 'Arial',
-				fontSize : defaultFontSize,
+				fontSize : 10,
 				fontWeight : 'bold'
 			},
-			width: 'auto',
-			heigth: 'auto'
+			height : 30,
+			width : 30,
 		});
 
 		return labelpin.toImage();
@@ -51,12 +51,12 @@ function MapWin() {
 			latitude : point["lat"],
 			longitude : point["lng"],
 			title : point["name_en"],
-			subtitle : String.format("%s/%s", point["sus_bike"], point["tot_bike"]),
+			//subtitle : String.format("%s/%s", point["sus_bike"], point["tot_bike"]),
 			//pincolor : Titanium.Map.ANNOTATION_RED,
 			image : pinblob,
 			animate : false,
 			rightButton : Titanium.UI.iPhone.SystemButton.INFO_LIGHT,
-			myid : point["id"]
+			//myid : point["id"]
 		});
 		//Titanium.API.info(annotation);
 		return annotation;
@@ -68,7 +68,7 @@ function MapWin() {
 			gdata = data;
 			for (var i = 0; i < data.length; i++) {
 				pinblob = self.createPin(data[i]['sus_bike']);
-				bikes.push(self.createAnnotation(data[i],pinblob));
+				bikes.push(self.createAnnotation(data[i], pinblob));
 				//bikes.push(self.createAnnotation(data[i]));
 			}
 
@@ -184,7 +184,8 @@ function MapWin() {
 	//events/
 	mapView.addEventListener('click', function(e) {
 		//Titanium.API.info('need a bike bro?');
-		if (e.clicksource == 'rightButton') {
+		if (e.clicksource == 'pin') {
+		//if (e.clicksource == 'rightButton') {
 			self.fireEvent('app:details', {
 				data : gdata[e['index']]
 			});
