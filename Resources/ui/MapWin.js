@@ -7,7 +7,7 @@ function MapWin() {
 	});
 
 	var gdata;
-
+	var defaultFontSize = Ti.Platform.name === 'android' ? 16 : 14;
 	self.hasroute = false;
 
 	//container for the data
@@ -28,15 +28,33 @@ function MapWin() {
 	self.add(mapView);
 
 	//Annotation creation methods
-	self.createAnnotation = function(point) {
+	self.createPin = function(text) {
+		var labelpin = Ti.UI.createLabel({
+			backgroundImage : '/images/pin.png',
+			text : text,
+			textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
+			font : {
+				fontFamily : 'Arial',
+				fontSize : defaultFontSize,
+				fontWeight : 'bold'
+			},
+			width: 'auto',
+			heigth: 'auto'
+		});
+
+		return labelpin.toImage();
+	};
+
+	self.createAnnotation = function(point, pinblob) {
 		//Titanium.API.info(point);
 		var annotation = Ti.Map.createAnnotation({
 			latitude : point["lat"],
 			longitude : point["lng"],
 			title : point["name_en"],
 			subtitle : String.format("%s/%s", point["sus_bike"], point["tot_bike"]),
-			pincolor : Titanium.Map.ANNOTATION_RED,
-			animate : true,
+			//pincolor : Titanium.Map.ANNOTATION_RED,
+			image : pinblob,
+			animate : false,
 			rightButton : Titanium.UI.iPhone.SystemButton.INFO_LIGHT,
 			myid : point["id"]
 		});
@@ -49,8 +67,11 @@ function MapWin() {
 			var bikes = [];
 			gdata = data;
 			for (var i = 0; i < data.length; i++) {
-				bikes.push(self.createAnnotation(data[i]));
+				pinblob = self.createPin(data[i]['sus_bike']);
+				bikes.push(self.createAnnotation(data[i],pinblob));
+				//bikes.push(self.createAnnotation(data[i]));
 			}
+
 			mapView.setAnnotations(bikes);
 			//Here we should auto select the closest one to the user
 			//mapView.selectAnnotation(mapView.annotations[i].title,true);
@@ -68,24 +89,31 @@ function MapWin() {
 
 			var longitude = e.coords.longitude;
 			var latitude = e.coords.latitude;
-			
+
 			//currentLocation.text = 'long:' + longitude + ' lat: ' + latitude;
 
 			//Titanium.API.info('geo - current location: long: ' + longitude + ' lat: ' + latitude );
-			
-			return {lat: latitude, lng: longitude};
+
+			return {
+				lat : latitude,
+				lng : longitude
+			};
 		});
 	};
-	self.drawRoute = function(point) {
+
+	self.clearRoute = function() {
 		if (self.hasroute) {
+			Ti.API.info('cleaning up route');
 			mapView.removeRoute(self.route);
 			self.hasroute = false;
 		}
+	};
 
+	self.drawRoute = function(point) {
+		self.clearRoute();
 		//origin = point['lat'] + 0.27 + "," + (point['lng'] + 0.34);
-		destination = point['lat']+","+point['lng'];
+		destination = point['lat'] + "," + point['lng'];
 		//origin = self.getLocation();
-		
 
 		data = [];
 		var url = "http://maps.googleapis.com/maps/api/directions/xml?origin=25.046881,121.545225&destination=25.049881,121.555225&sensor=false"
@@ -112,10 +140,10 @@ function MapWin() {
 			}
 			Ti.API.info(data);
 			self.route = {
-				color : '#1DDE37',
+				color : 'blue',
 				name : 'testroute',
 				points : data,
-				width : 3,
+				width : 7,
 			}
 			mapView.addRoute(self.route);
 			self.hasroute = true;

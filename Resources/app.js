@@ -26,6 +26,7 @@ if (Ti.version < 1.8) {
 		//refresh button
 		mapWin.addEventListener('app:refresh', function(e) {
 			Ti.API.info('mapwin refresh');
+			mapWin.clearRoute();
 			refreshData();
 		});
 		listWin.addEventListener('app:refresh', function(e) {
@@ -47,6 +48,7 @@ if (Ti.version < 1.8) {
 		mapWin.addEventListener('app:details', function(e) {
 			Ti.API.info('app:details');
 			//Ti.API.info(e);
+			mapWin.clearRoute();
 			detailsWin.fill(e['data']);
 			detailsWin.open();
 		});
