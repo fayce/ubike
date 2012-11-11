@@ -16,10 +16,14 @@ function DetailsWin() {
 		opacity : 0.95,
 	});
 
-	var close = Titanium.UI.createImageView({
-		image : '/images/close.png',
+	var close = Titanium.UI.createButton({
 		right : 10,
 		top : 10,
+		backgroundImage : '/images/close_n.png',
+		backgroundSelectedImage : '/images/close_p.png',
+		width : '25dip',
+		height : '25dip'
+
 	});
 
 	self.add(close)
@@ -34,13 +38,13 @@ function DetailsWin() {
 			fontWeight : 'bold'
 		},
 		left : 0,
-		top : 150,
+		top : 170,
 		width : '50%',
 		height : 'auto'
 	});
 	var labelSusLegend = Ti.UI.createLabel({
 		color : '#FFFFFF',
-		backgroundColor : "#dd3d2d",
+		backgroundColor : "#aa3023",
 		textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
 		text : 'Available',
 		font : {
@@ -49,7 +53,7 @@ function DetailsWin() {
 			fontWeight : 'bold'
 		},
 		left : 0,
-		top : 210,
+		top : 230,
 		width : '50%',
 		height : 'auto'
 	});
@@ -64,13 +68,13 @@ function DetailsWin() {
 			fontWeight : 'bold'
 		},
 		right : 0,
-		top : 150,
+		top : 170,
 		width : '50%',
 		height : 'auto'
 	});
 	var labelTotLegend = Ti.UI.createLabel({
 		color : '#FFFFFF',
-		backgroundColor : "#4cbfde",
+		backgroundColor : "#3e97af",
 		textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
 		text : 'Total',
 		font : {
@@ -79,20 +83,32 @@ function DetailsWin() {
 			fontWeight : 'bold'
 		},
 		right : 0,
-		top : 210,
+		top : 230,
 		width : '50%',
 		height : 'auto'
 	});
 
-	var labelStation = Ti.UI.createLabel({
+	var labelStation_zh = Ti.UI.createLabel({
 		color : '#b0c81c',
 		font : {
 			fontFamily : 'Arial',
-			fontSize : defaultFontSize + 20,
+			fontSize : defaultFontSize + 17,
 			fontWeight : 'bold'
 		},
 		textAlign : Ti.UI.TEXT_ALIGNMENT_LEFT,
-		top : 30,
+		top : 35,
+		width : 'auto',
+		height : 'auto',
+	});
+	var labelStation_en = Ti.UI.createLabel({
+		color : '#b0c81c',
+		font : {
+			fontFamily : 'Arial',
+			fontSize : defaultFontSize,
+			fontWeight : 'bold'
+		},
+		textAlign : Ti.UI.TEXT_ALIGNMENT_LEFT,
+		top : 64,
 		width : 'auto',
 		height : 'auto',
 	});
@@ -101,30 +117,41 @@ function DetailsWin() {
 		color : '#eead1d',
 		font : {
 			fontFamily : 'Arial',
-			fontSize : defaultFontSize + 10
+			fontSize : defaultFontSize + 5
 		},
 		textAlign : Ti.UI.TEXT_ALIGNMENT_LEFT,
-		top : 120,
+		top : 100,
 		width : 'auto',
 		height : 'auto',
 	});
 
+/*
 	var buttonRouteMe = Titanium.UI.createButton({
-		title : 'Route Me !',
-		top : 250,
-		width : '50%',
-		height : 50,
-		borderRadius : 0,
-	});
-	var buttonClose = Titanium.UI.createButton({
-		title : 'Close',
-		top : 300,
-		width : '50%',
-		height : 50,
-		borderRadius : 0,
+		title : "Route me",
+		textAlign : Ti.UI.TEXT_ALIGNMENT_LEFT,
+		font : {
+			fontFamily : 'Arial',
+			fontSize : defaultFontSize
+		},
+		backgroundImage : '/images/LetsGo.png',
+		backgroundSelectedImage : '/images/LetsGo.png',
+		//image : '/images/LetsGo.png',
+		top : 270,
+		width : '115dip',
+		height : '33dip',
+		//borderRadius : 0,
+	});*/
+	var buttonRouteMe = Titanium.UI.createButton({
+		backgroundImage : '/images/map_p.png',
+		backgroundSelectedImage : '/images/map_n.png',
+		width : '30dip',
+		height : '30dip',
+		top : 280
 	});
 
-	self.add(labelStation);
+
+	self.add(labelStation_zh);
+	self.add(labelStation_en);
 	self.add(labelAddress);
 	self.add(labelSus);
 	self.add(labelTot);
@@ -134,9 +161,6 @@ function DetailsWin() {
 	//self.add(buttonClose);
 	//events
 	close.addEventListener('click', function(e) {
-		self.close();
-	});
-	buttonClose.addEventListener('click', function(e) {
 		self.close();
 	});
 
@@ -152,7 +176,8 @@ function DetailsWin() {
 	//methods
 	self.fill = function(data) {
 		gdata = data;
-		labelStation.setText(gdata['name_zh']);
+		labelStation_zh.setText(gdata['name_zh']);
+		labelStation_en.setText(gdata['name_en']);
 		labelAddress.setText(gdata['address_zh']);
 		labelSus.setText(gdata['sus_bike']);
 		labelTot.setText(gdata['tot_bike']);

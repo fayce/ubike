@@ -27,17 +27,23 @@ function ListWin() {
 	});
 
 	//Create the toolbar
-	var refresh = Titanium.UI.createImageView({
-		image : '/images/reload.png'
+	var refresh = Titanium.UI.createButton({
+		backgroundImage : '/images/reload_n.png',
+		backgroundSelectedImage : '/images/reload_p.png',
+		width : '30dip',
+		height : '30dip'
 	});
 
 	var logo = Ti.UI.createImageView({
 		image : '/images/logo.png',
-		height : '43dip'
+		height : '38dip'
 	})
 
-	var switchwin = Titanium.UI.createImageView({
-		image : '/images/map.png'
+	var switchwin = Titanium.UI.createButton({
+		backgroundImage : '/images/map_n.png',
+		backgroundSelectedImage : '/images/map_p.png',
+		width : '30dip',
+		height : '30dip'
 	});
 
 	flexSpace = Titanium.UI.createButton({
@@ -66,6 +72,9 @@ function ListWin() {
 		self.fireEvent('app:refresh')
 	});
 	switchwin.addEventListener('click', function(e) {
+		self.fireEvent('app:map');
+	});
+	self.addEventListener('swipe', function(e) {
 		self.fireEvent('app:map');
 	});
 

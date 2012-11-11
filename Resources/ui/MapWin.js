@@ -39,26 +39,30 @@ function MapWin() {
 		//Ti.API.info(percent);
 		bgcolor = "";
 		if (percent < 33) {
+			bg = "/images/pin_green.png";
 			bgcolor = "#b0c81c";
 		} else if (percent > 33 && percent < 66) {
+			bg = "/images/pin_orange.png";
 			bgcolor = "#eead1d";
 		} else {
+			bg = "/images/pin_red.png";
 			bgcolor = "#dd3d2d";
 		}
 
 		var labelpin = Ti.UI.createLabel({
-			//backgroundImage : '/images/pin.png',
+			backgroundImage : bg,
 			color : '#FFFFFF',
-			backgroundColor : bgcolor,
+			//backgroundColor : bgcolor,
 			borderRadius : 6,
 			text : text,
 			textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
 			font : {
 				fontFamily : 'Arial',
-				fontSize : 16
+				fontSize : 13,
+				fontWeight : 'bold'
 			},
 			height : '30dip',
-			width : '30dip',
+			width : '45dip',
 			opacity : 0.9
 		});
 
@@ -70,7 +74,8 @@ function MapWin() {
 		var annotation = Ti.Map.createAnnotation({
 			latitude : point["lat"],
 			longitude : point["lng"],
-			title : point["name_en"],
+			//title : point["name_en"],
+			title : point["name_zh"],
 			subtitle : String.format("%s bikes", point["sus_bike"]),
 			//pincolor : Titanium.Map.ANNOTATION_RED,
 			image : pinblob,
@@ -196,19 +201,31 @@ function MapWin() {
 
 	}
 	//Create the toolbar
+	/*
 	var refresh = Titanium.UI.createImageView({
 		image : '/images/reload.png',
 		left : 0
+	});*/
+	
+	var refresh = Titanium.UI.createButton({
+		backgroundImage : '/images/reload_n.png',
+		backgroundSelectedImage : '/images/reload_p.png',
+		width: '30dip',
+		height: '30dip'
+		
 	});
 
 	var logo = Ti.UI.createImageView({
 		image : '/images/logo.png',
-		height : '43dip'
+		height : '38dip'
 	})
 
-	var switchwin = Titanium.UI.createImageView({
-		image : '/images/list.png',
-		right : 0
+	var switchwin = Titanium.UI.createButton({
+		backgroundImage : '/images/list_n.png',
+		backgroundSelectedImage : '/images/list_p.png',
+	
+		width: '30dip',
+		height: '30dip'
 	});
 
 	flexSpace = Titanium.UI.createButton({
@@ -242,6 +259,9 @@ function MapWin() {
 		self.fireEvent('app:refresh')
 	});
 	switchwin.addEventListener('click', function(e) {
+		self.fireEvent('app:list');
+	});
+	self.addEventListener('swipe', function(e) {
 		self.fireEvent('app:list');
 	});
 
