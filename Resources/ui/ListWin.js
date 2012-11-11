@@ -15,7 +15,7 @@ function ListWin() {
 	//table
 	var tableView = Ti.UI.createTableView({
 		//data : tableData
-		top : '43px',
+		top : '43dip',
 		search : searchbar,
 		hideSearchOnSelection : true
 	});
@@ -33,6 +33,7 @@ function ListWin() {
 
 	var logo = Ti.UI.createImageView({
 		image : '/images/logo.png',
+		height : '43dip'
 	})
 
 	var switchwin = Titanium.UI.createImageView({
@@ -88,13 +89,21 @@ function ListWin() {
 					rowIndex : i, // custom property, useful for determining the row during events
 					height : 75
 				});
-
+				bgcolor = "";
+				percent = data[i]['percent'];
+				if (percent < 33) {
+					bgcolor = "#b0c81c";
+				} else if (percent > 33 && percent < 66) {
+					bgcolor = "#eead1d";
+				} else {
+					bgcolor = "#dd3d2d";
+				}
 				var countBox = Ti.UI.createLabel({
 					color : '#FFFFFF',
-					backgroundColor : "#E01B6A",
+					backgroundColor : bgcolor,
 					borderRadius : 11,
 					text : data[i]['sus_bike'],
-					textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+					textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
 					font : {
 						fontFamily : 'Arial',
 						fontSize : defaultFontSize + 6,
@@ -108,7 +117,7 @@ function ListWin() {
 				row.add(countBox);
 
 				var labelStationName = Ti.UI.createLabel({
-					color : '#576996',
+					color : '#1d79a8', //dark blue
 					font : {
 						fontFamily : 'Arial',
 						fontSize : defaultFontSize + 6,
@@ -123,7 +132,7 @@ function ListWin() {
 				row.add(labelStationName);
 
 				var labelAddress = Ti.UI.createLabel({
-					color : '#222',
+					color : '#4d4d4f',
 					font : {
 						fontFamily : 'Arial',
 						fontSize : defaultFontSize + 2,

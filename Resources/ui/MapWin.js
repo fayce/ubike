@@ -10,6 +10,8 @@ function MapWin() {
 	var defaultFontSize = Ti.Platform.name === 'android' ? 16 : 14;
 	self.hasroute = false;
 
+	Ti.Geolocation.preferredProvider = "gps";
+	Ti.Geolocation.purpose = "uBike request";
 	//container for the data
 	//Create the map view
 	var mapView = Ti.Map.createView({
@@ -28,21 +30,39 @@ function MapWin() {
 	self.add(mapView);
 
 	//Annotation creation methods
-	self.createPin = function(text) {
+	self.createPin = function(text, percent) {
+		/* #b0c81c lime green
+		* #4cbfde light blue
+		* #dd3d2d red
+		* #eead1d orange
+		* */
+		//Ti.API.info(percent);
+		bgcolor = "";
+		if (percent < 33) {
+			bgcolor = "#b0c81c";
+		} else if (percent > 33 && percent < 66) {
+			bgcolor = "#eead1d";
+		} else {
+			bgcolor = "#dd3d2d";
+		}
+
 		var labelpin = Ti.UI.createLabel({
-			backgroundImage : '/images/pin.png',
+			//backgroundImage : '/images/pin.png',
+			color : '#FFFFFF',
+			backgroundColor : bgcolor,
+			borderRadius : 6,
 			text : text,
 			textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
 			font : {
 				fontFamily : 'Arial',
-				fontSize : 10,
-				fontWeight : 'bold'
+				fontSize : 16
 			},
-			height : 30,
-			width : 30,
+			height : '30dip',
+			width : '30dip',
+			opacity : 0.9
 		});
 
-		return labelpin.toImage();
+		return labelpin.toImage(null, true);
 	};
 
 	self.createAnnotation = function(point, pinblob) {
@@ -51,14 +71,13 @@ function MapWin() {
 			latitude : point["lat"],
 			longitude : point["lng"],
 			title : point["name_en"],
-			//subtitle : String.format("%s/%s", point["sus_bike"], point["tot_bike"]),
+			subtitle : String.format("%s bikes", point["sus_bike"]),
 			//pincolor : Titanium.Map.ANNOTATION_RED,
 			image : pinblob,
 			animate : false,
 			rightButton : Titanium.UI.iPhone.SystemButton.INFO_LIGHT,
 			//myid : point["id"]
 		});
-		//Titanium.API.info(annotation);
 		return annotation;
 	};
 
@@ -67,7 +86,8 @@ function MapWin() {
 			var bikes = [];
 			gdata = data;
 			for (var i = 0; i < data.length; i++) {
-				pinblob = self.createPin(data[i]['sus_bike']);
+
+				pinblob = self.createPin(data[i]['sus_bike'], data[i]['percent']);
 				bikes.push(self.createAnnotation(data[i], pinblob));
 				//bikes.push(self.createAnnotation(data[i]));
 			}
@@ -77,28 +97,28 @@ function MapWin() {
 			//mapView.selectAnnotation(mapView.annotations[i].title,true);
 		}
 	};
-	self.getLocation = function() {
-		Ti.Geolocation.purpose = "What's your location?";
-		Titanium.Geolocation.getCurrentPosition(function(e) {
-			var currentLocation = '';
-			if (!e.success || e.error) {
-				currentLocation.text = 'error: ' + JSON.stringify(e.error);
-				alert('error ' + JSON.stringify(e.error));
-				return;
-			}
 
-			var longitude = e.coords.longitude;
-			var latitude = e.coords.latitude;
-
-			//currentLocation.text = 'long:' + longitude + ' lat: ' + latitude;
-
-			//Titanium.API.info('geo - current location: long: ' + longitude + ' lat: ' + latitude );
-
-			return {
-				lat : latitude,
-				lng : longitude
-			};
-		});
+	///////////////////////////// Location related functions ////////////////////////////////
+	self.translateErrorCode = function(code) {
+		if (code == null) {
+			return null;
+		}
+		switch (code) {
+			case Ti.Geolocation.ERROR_LOCATION_UNKNOWN:
+				return "Location unknown";
+			case Ti.Geolocation.ERROR_DENIED:
+				return "Access denied";
+			case Ti.Geolocation.ERROR_NETWORK:
+				return "Network error";
+			case Ti.Geolocation.ERROR_HEADING_FAILURE:
+				return "Failure to detect heading";
+			case Ti.Geolocation.ERROR_REGION_MONITORING_DENIED:
+				return "Region monitoring access denied";
+			case Ti.Geolocation.ERROR_REGION_MONITORING_FAILURE:
+				return "Region monitoring access failure";
+			case Ti.Geolocation.ERROR_REGION_MONITORING_DELAYED:
+				return "Region monitoring setup delayed";
+		}
 	};
 
 	self.clearRoute = function() {
@@ -112,43 +132,67 @@ function MapWin() {
 	self.drawRoute = function(point) {
 		self.clearRoute();
 		//origin = point['lat'] + 0.27 + "," + (point['lng'] + 0.34);
-		destination = point['lat'] + "," + point['lng'];
-		//origin = self.getLocation();
 
-		data = [];
-		var url = "http://maps.googleapis.com/maps/api/directions/xml?origin=25.046881,121.545225&destination=25.049881,121.555225&sensor=false"
-		//var url = "http://maps.googleapis.com/maps/api/directions/xml?origin=" + origin + "&destination=" + destination + "&sensor=true";
-		xhr = Titanium.Network.createHTTPClient();
-		xhr.open('GET', url);
-		Ti.API.info('URL: ' + url);
-		xhr.onload = function() {
-
-			// Now parse the XML
-			var xml = this.responseXML;
-
-			// Find the steps in response
-			var itemList = xml.documentElement.getElementsByTagName("start_location");
-			Ti.API.info('found ' + itemList.length + ' items in the step xml');
-			//Ti.API.info(itemlist);
-			for (var i = 0; i < itemList.length; i++) {
-				var item = itemList.item(i);
-
-				data.push({
-					latitude : item.getElementsByTagName("lat").item(0).text,
-					longitude : item.getElementsByTagName("lng").item(0).text,
-				});
+		Ti.API.info("Getting current GPS coords");
+		var lng, lat, acc, ts;
+		Titanium.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_BEST;
+		Titanium.Geolocation.getCurrentPosition(function(e) {
+			if (!e.success || e.error) {
+				currentLocation.text = 'error: ' + JSON.stringify(e.error);
+				Ti.API.info("Code translation: " + self.translateErrorCode(e.code));
+				alert('error ' + JSON.stringify(e.error));
+				return;
 			}
-			Ti.API.info(data);
-			self.route = {
-				color : 'blue',
-				name : 'testroute',
-				points : data,
-				width : 7,
-			}
-			mapView.addRoute(self.route);
-			self.hasroute = true;
-		};
-		xhr.send();
+
+			lng = e.coords.longitude;
+			lat = e.coords.latitude;
+			acc = e.coords.accuracy;
+			ts = e.coords.timestamp;
+
+			Titanium.API.info('geo - current location: ' + new Date(ts) + ' long ' + lng + ' lat ' + lat + ' accuracy ' + acc);
+			orig = lat + "," + lng;
+			dest = point['lat'] + "," + point['lng'];
+			//origin = self.getLocation();
+
+			data = [];
+			//var url = "http://maps.googleapis.com/maps/api/directions/xml?origin=25.046881,121.545225&destination=25.049881,121.555225&sensor=false"
+			var url = "http://maps.googleapis.com/maps/api/directions/xml?origin=" + orig + "&destination=" + dest + "&sensor=false";
+			xhr = Titanium.Network.createHTTPClient();
+			xhr.open('GET', url);
+			Ti.API.info('URL: ' + url);
+			xhr.onload = function() {
+
+				// Now parse the XML
+				var xml = this.responseXML;
+
+				// Find the steps in response
+				var itemList = xml.documentElement.getElementsByTagName("start_location");
+				Ti.API.info('found ' + itemList.length + ' items in the step xml');
+				//Ti.API.info(itemlist);
+				if (itemList.length) {
+					for (var i = 0; i < itemList.length - 1; i++) {
+						var item = itemList.item(i);
+
+						data.push({
+							latitude : item.getElementsByTagName("lat").item(0).text,
+							longitude : item.getElementsByTagName("lng").item(0).text,
+						});
+					}
+					//Ti.API.info(data);
+					self.route = {
+						color : '#4cbfde',
+						name : 'testroute',
+						points : data,
+						width : 7,
+					}
+					mapView.addRoute(self.route);
+					self.hasroute = true;
+				} else {
+					alert("can't draw route, please try again later");
+				}
+			};
+			xhr.send();
+		});
 
 	}
 	//Create the toolbar
@@ -159,6 +203,7 @@ function MapWin() {
 
 	var logo = Ti.UI.createImageView({
 		image : '/images/logo.png',
+		height : '43dip'
 	})
 
 	var switchwin = Titanium.UI.createImageView({
@@ -184,8 +229,9 @@ function MapWin() {
 	//events/
 	mapView.addEventListener('click', function(e) {
 		//Titanium.API.info('need a bike bro?');
-		if (e.clicksource == 'pin') {
-		//if (e.clicksource == 'rightButton') {
+		//if (e.clicksource == 'pin') {
+		Ti.API.info(e['index']);
+		if (e.clicksource == 'rightButton') {
 			self.fireEvent('app:details', {
 				data : gdata[e['index']]
 			});

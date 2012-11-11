@@ -31,7 +31,9 @@ exports.loadFeed = function(o, tries) {
 		//Titanium.API.info(items);
 		for (var i = 0; i < items.length; i++) {
 			var item = items.item(i);
-			
+			sb = parseFloat(item.getAttribute("sus"));
+			tb = parseFloat(item.getAttribute("tot"));
+			percent = 100*(sb/tb);
 			data.push({
 				lat : item.getAttribute("lat"),
 				lng : item.getAttribute("lng"),
@@ -42,6 +44,7 @@ exports.loadFeed = function(o, tries) {
 				address_zh: item.getAttribute("address"),
 				sus_bike: item.getAttribute("sus"),
 				tot_bike: item.getAttribute("tot"),
+				percent: percent,
 				id: i
 			});
 		}
