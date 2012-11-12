@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="conn_err_title">聯接錯誤</string>
+	<string name="conn_err_msg">uBike 需要被連接到自行車資料下載</string>
+	<string name="loading">加載...</string>
+</resources>

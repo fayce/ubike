@@ -129,10 +129,10 @@ function ListWin() {
 					color : '#1d79a8', //dark blue
 					font : {
 						fontFamily : 'Arial',
-						fontSize : defaultFontSize + 6,
+						fontSize : defaultFontSize + 3,
 						fontWeight : 'bold'
 					},
-					text : data[i]['name_zh'],
+					text : (Ti.Locale.currentLanguage === 'zh-Hant') || (Ti.Locale.currentLanguage === 'zh-Hans') ? data[i]['name_zh'] : data[i]['name_en'],
 					left : 70,
 					top : 6,
 					width : 200,
@@ -148,6 +148,8 @@ function ListWin() {
 						fontWeight : 'normal'
 					},
 					text : data[i]['address_zh'],
+					//text : (Ti.Locale.currentLanguage === 'zh-Hant') || (Ti.Locale.currentLanguage === 'zh-Hanz') ? data[i]['address_zh'] : data[i]['address_en'],
+					
 					left : 70,
 					top : 44,
 					width : 360

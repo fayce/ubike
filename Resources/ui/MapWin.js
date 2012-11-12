@@ -2,8 +2,8 @@
 function MapWin() {
 	//create object instance, parasitic subclass of Observable
 	var self = Ti.UI.createWindow({
-		backgroundColor : 'blue',
-		title : 'test title'
+		backgroundColor : '#FFFFFF',
+		title : 'uBike Map'
 	});
 
 	var gdata;
@@ -214,6 +214,8 @@ function MapWin() {
 		height: '30dip'
 		
 	});
+	
+	//var activityInd = Titanium.UI.iPhone.ActivityIndicatorStyle.PLAIN;
 
 	var logo = Ti.UI.createImageView({
 		image : '/images/logo.png',

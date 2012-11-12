@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="conn_err_title">Connexion Error</string>
+	<string name="conn_err_msg">uBike needs to be connected to download bike info</string>
+	<string name="loading">Loading...</string>
+</resources>

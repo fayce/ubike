@@ -1,9 +1,9 @@
 /*
- *  uBike Taipei Mobile app 
+ *  uBike Taipei Mobile app
  *  Faycal Guennar <me@ayce.net>
  *  Nov 2012
- * 
- * 
+ *
+ *
  * *****************************************
  *  CI color:
  * #b0c81c lime green
@@ -12,8 +12,8 @@
  * #eead1d orange
  * #1d79a8 dark blue
  * #4d4d4f dark grey
- * **************************************** 
- * 
+ * ****************************************
+ *
  * */
 
 if (Ti.version < 1.8) {
@@ -29,13 +29,48 @@ if (Ti.version < 1.8) {
 		detailsWin = new DetailsWin();
 
 		var activeWin = 'mapwin';
+		var language = Ti.Locale.currentLanguage;
+		Ti.API.info(language);
+		/*
+		Ti.UI.createAlertDialog({
+		title : L("conn_err_title"),
+		message : L("conn_err_msg")
+		}).show();
+		*/
 
 		//funcs
+		var loader = Ti.UI.createLabel({
+			color : '#FFFFFF',
+			backgroundColor : 'black',
+			borderRadius : 11,
+			opacity : 0.8,
+			text : L('loading'),
+			textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
+			font : {
+				fontFamily : 'Arial',
+				fontSize : 25,
+				fontWeight : 'bold'
+			},
+			width : '150dip',
+			height : '150dip'
+		});
+
 		function refreshData() {
+			mapWin.add(loader);
+			listWin.add(loader);
+			Ti.API.info('loading...');
 			BikeFeed.loadFeed({
 				success : function(data) {
+					Ti.API.info('finished loading!!!');
+					mapWin.remove(loader);
+					listWin.remove(loader);
 					mapWin.refreshPins(data);
 					listWin.refreshTable(data);
+				},
+				error : function(e) {
+					Ti.API.info('finished loading..but failed');
+					mapWin.remove(loader);
+					listWin.remove(loader);
 				}
 			});
 		}
@@ -58,7 +93,8 @@ if (Ti.version < 1.8) {
 			activeWin = 'listwin';
 			listWin.open({
 				view : mapWin,
-				transition : Ti.UI.iPhone.AnimationStyle.FLIP_FROM_RIGHT
+				//transition : Ti.UI.iPhone.AnimationStyle.FLIP_FROM_RIGHT
+				transition : Ti.UI.iPhone.AnimationStyle.CURL_UP
 			});
 		});
 
@@ -79,11 +115,11 @@ if (Ti.version < 1.8) {
 		detailsWin.addEventListener('app:routeme', function(e) {
 			Ti.API.info('app:routeme');
 			//Ti.API.info(e);
-			
+
 			//detailsWin.fill(e['data']);
 			detailsWin.close();
-			
-			if (activeWin == 'listwin'){
+
+			if (activeWin == 'listwin') {
 				listWin.close();
 			}
 			mapWin.drawRoute(e);
@@ -95,7 +131,8 @@ if (Ti.version < 1.8) {
 			activeWin = 'mapWin';
 			listWin.close({
 				view : listWin,
-				transition : Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT
+				//transition : Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT
+				transition : Ti.UI.iPhone.AnimationStyle.CURL_DOWN
 			});
 		});
 
