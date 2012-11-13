@@ -76,7 +76,7 @@ function MapWin() {
 			longitude : point["lng"],
 			//title : point["name_en"],
 			title : point["name_zh"],
-			subtitle : String.format("%s bikes", point["sus_bike"]),
+			subtitle : String.format("%s %s", point["sus_bike"], L("bikes")),
 			//pincolor : Titanium.Map.ANNOTATION_RED,
 			image : pinblob,
 			animate : false,
@@ -104,27 +104,6 @@ function MapWin() {
 	};
 
 	///////////////////////////// Location related functions ////////////////////////////////
-	self.translateErrorCode = function(code) {
-		if (code == null) {
-			return null;
-		}
-		switch (code) {
-			case Ti.Geolocation.ERROR_LOCATION_UNKNOWN:
-				return "Location unknown";
-			case Ti.Geolocation.ERROR_DENIED:
-				return "Access denied";
-			case Ti.Geolocation.ERROR_NETWORK:
-				return "Network error";
-			case Ti.Geolocation.ERROR_HEADING_FAILURE:
-				return "Failure to detect heading";
-			case Ti.Geolocation.ERROR_REGION_MONITORING_DENIED:
-				return "Region monitoring access denied";
-			case Ti.Geolocation.ERROR_REGION_MONITORING_FAILURE:
-				return "Region monitoring access failure";
-			case Ti.Geolocation.ERROR_REGION_MONITORING_DELAYED:
-				return "Region monitoring setup delayed";
-		}
-	};
 
 	self.clearRoute = function() {
 		if (self.hasroute) {
@@ -186,14 +165,19 @@ function MapWin() {
 					//Ti.API.info(data);
 					self.route = {
 						color : '#4cbfde',
-						name : 'testroute',
+						name : 'uBike',
 						points : data,
 						width : 7,
 					}
 					mapView.addRoute(self.route);
 					self.hasroute = true;
 				} else {
-					alert("can't draw route, please try again later");
+					//alert("can't draw route, please try again later");
+
+					Ti.UI.createAlertDialog({
+						title : L('no_route_title'),
+						message : L('no_route_msg')
+					}).show();
 				}
 			};
 			xhr.send();
@@ -202,19 +186,19 @@ function MapWin() {
 	}
 	//Create the toolbar
 	/*
-	var refresh = Titanium.UI.createImageView({
-		image : '/images/reload.png',
-		left : 0
-	});*/
-	
+	 var refresh = Titanium.UI.createImageView({
+	 image : '/images/reload.png',
+	 left : 0
+	 });*/
+
 	var refresh = Titanium.UI.createButton({
 		backgroundImage : '/images/reload_n.png',
 		backgroundSelectedImage : '/images/reload_p.png',
-		width: '30dip',
-		height: '30dip'
-		
+		width : '30dip',
+		height : '30dip'
+
 	});
-	
+
 	//var activityInd = Titanium.UI.iPhone.ActivityIndicatorStyle.PLAIN;
 
 	var logo = Ti.UI.createImageView({
@@ -225,9 +209,9 @@ function MapWin() {
 	var switchwin = Titanium.UI.createButton({
 		backgroundImage : '/images/list_n.png',
 		backgroundSelectedImage : '/images/list_p.png',
-	
-		width: '30dip',
-		height: '30dip'
+
+		width : '30dip',
+		height : '30dip'
 	});
 
 	flexSpace = Titanium.UI.createButton({

@@ -46,7 +46,7 @@ function DetailsWin() {
 		color : '#FFFFFF',
 		backgroundColor : "#aa3023",
 		textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
-		text : 'Available',
+		text : L('free'),
 		font : {
 			fontFamily : 'Arial',
 			fontSize : defaultFontSize + 5,
@@ -76,7 +76,7 @@ function DetailsWin() {
 		color : '#FFFFFF',
 		backgroundColor : "#3e97af",
 		textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
-		text : 'Total',
+		text : L('total'),
 		font : {
 			fontFamily : 'Arial',
 			fontSize : defaultFontSize + 5,
@@ -125,22 +125,6 @@ function DetailsWin() {
 		height : 'auto',
 	});
 
-/*
-	var buttonRouteMe = Titanium.UI.createButton({
-		title : "Route me",
-		textAlign : Ti.UI.TEXT_ALIGNMENT_LEFT,
-		font : {
-			fontFamily : 'Arial',
-			fontSize : defaultFontSize
-		},
-		backgroundImage : '/images/LetsGo.png',
-		backgroundSelectedImage : '/images/LetsGo.png',
-		//image : '/images/LetsGo.png',
-		top : 270,
-		width : '115dip',
-		height : '33dip',
-		//borderRadius : 0,
-	});*/
 	var buttonRouteMe = Titanium.UI.createButton({
 		backgroundImage : '/images/map_p.png',
 		backgroundSelectedImage : '/images/map_n.png',
@@ -158,7 +142,7 @@ function DetailsWin() {
 	self.add(labelSusLegend);
 	self.add(labelTotLegend);
 	self.add(buttonRouteMe);
-	//self.add(buttonClose);
+
 	//events
 	close.addEventListener('click', function(e) {
 		self.close();

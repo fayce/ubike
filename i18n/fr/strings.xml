@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="loading">Chargement...</string>
+	<string name="bikes">vélos</string>	
+	<string name="free">Disponibles</string>	
+	<string name="total">Total</string>	
+	<string name="conn_err_title">Erreur de Connexion</string>
+	<string name="conn_err_msg">uBike a besoin d'une connexion internet pour fonctionner correctement</string>
+	<string name="no_route_title">Ooops!</string>
+	<string name="no_route_msg">Impossible de tracer un chemin, réessayer plus tard.</string>
+	<string name="empty_feed_title">Désolé!</string>
+	<string name="empty_feed_msg">Erreur lors de la reception des donnees uBike, réessayer plus tard.</string>
+</resources>

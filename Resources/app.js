@@ -62,10 +62,10 @@ if (Ti.version < 1.8) {
 			BikeFeed.loadFeed({
 				success : function(data) {
 					Ti.API.info('finished loading!!!');
-					mapWin.remove(loader);
-					listWin.remove(loader);
 					mapWin.refreshPins(data);
 					listWin.refreshTable(data);
+					mapWin.remove(loader);
+					listWin.remove(loader);
 				},
 				error : function(e) {
 					Ti.API.info('finished loading..but failed');

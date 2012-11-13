@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<string name="conn_err_title">聯接錯誤</string>
-	<string name="conn_err_msg">uBike 需要被連接到自行車資料下載</string>
-	<string name="loading">加載...</string>
+	<string name="loading">下載中...</string>
+	<string name="bikes">腳踏車</string>	
+	<string name="free">可行的</string>	
+	<string name="total">總共</string>	
+	<string name="conn_err_title">連結錯誤</string>
+	<string name="conn_err_msg">uBike 需被正確的連上網路</string>
+	<string name="no_route_title">唉喲!</string>
+	<string name="no_route_msg">找不到路徑,請再試一次</string>
+	<string name="empty_feed_title">抱歉!</string>
+	<string name="empty_feed_msg">找不到 uBike 資料,請稍等再試</string>
 </resources>

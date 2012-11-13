@@ -3,7 +3,8 @@
  * @todo: add multiple feeds
  */
 var osname = Ti.Platform.osname;
-var FEED_URLS = ['http://fayce.net/ubike/feed.xml', 'http://fayce.net/ubike/feed.xml.bak2', 'http://fayce.net/ubike/feed.xml.bak'];
+var FEED_URLS = ['http://api.ubikeapp.com/v1/feed.xml', 
+				'http://s3-ap-southeast-1.amazonaws.com/api.ubikeapp.com/v1/feed.xml'];
 
 exports.loadFeed = function(o, tries, idx) {
 	Ti.API.info('entering loadFeed');
@@ -28,8 +29,8 @@ exports.loadFeed = function(o, tries, idx) {
 				Ti.API.info('finished trying');
 
 				Ti.UI.createAlertDialog({
-					title : 'no feed',
-					message : 'datafeed is empty bro'
+					title : L('empty_feed_title'),
+					message : L('empty_feed_msg')
 				}).show();
 				return;
 			}
