@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<string name="loading">下載中...</string>
+	<string name="loading">下載中</string>
 	<string name="bikes">腳踏車</string>	
 	<string name="free">可行的</string>	
 	<string name="total">總共</string>	

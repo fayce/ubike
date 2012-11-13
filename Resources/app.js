@@ -1,5 +1,5 @@
 /*
- *  uBike Taipei Mobile app
+ *  uBike Taiwan Mobile app
  *  Faycal Guennar <me@ayce.net>
  *  Nov 2012
  *

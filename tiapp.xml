@@ -8,13 +8,13 @@
         <target device="blackberry">false</target>
     </deployment-targets>
     <sdk-version>2.1.3.GA</sdk-version>
-    <id>net.fayce.ubike</id>
+    <id>com.ubikeapp</id>
     <name>ubike</name>
     <version>1.0</version>
-    <publisher>fayce</publisher>
-    <url>http://</url>
-    <description>not specified</description>
-    <copyright>2012 by fayce</copyright>
+    <publisher>Faycal Guennar</publisher>
+    <url>http://ubikeapp.com</url>
+    <description>Taiwan uBike has finally the app you've been waiting for ! With uBike app, find the nearest uBike station, and the location of all the uBike stations in Taipei. You will also know in realtime the available number of bikes in each station.</description>
+    <copyright>2012 - Faycal Guennar</copyright>
     <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>
     <prerendered-icon>false</prerendered-icon>

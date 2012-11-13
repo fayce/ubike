@@ -1,8 +1,8 @@
-#appname: ubike
-#publisher: fayce
-#url: http://
-#image: appicon.png
-#appid: net.fayce.ubike
-#desc: undefined
-#type: mobile
-#guid: 323a0bff-3c9c-47ae-ae45-fe8e67540f0a
+#appname:ubike
+#publisher:Faycal Guennar
+#url:http://ubikeapp.com
+#image:appicon.png
+#appid:com.ubikeapp
+#desc:Taiwan uBike has finally the app you've been waiting for ! With uBike app, find the nearest uBike station, and the location of all the uBike stations in Taipei. You will also know in realtime the available number of bikes in each station.
+#type:mobile
+#guid:323a0bff-3c9c-47ae-ae45-fe8e67540f0a
